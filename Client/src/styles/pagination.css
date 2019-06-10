@@ -1,0 +1,29 @@
+
+.pagination-active {
+  background-color: blue;
+  cursor: pointer;
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid #ddd; /* Gray */
+}
+
+.pagination-item {
+  cursor: pointer;
+  border: 1px solid #ddd; /* Gray */
+  padding: 10px 15px;
+}
+
+.pagination-item:hover {
+  background-color: #ddd
+}
+
+
+.FlexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.FlexRow {
+  display: flex;
+  flex-direction: row;
+}
