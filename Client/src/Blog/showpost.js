@@ -275,7 +275,7 @@ const ShowPost = (props) => {
         <div>
           <div>
             <h2>Post</h2>
-            {stateLocal.comments_arr
+            {stateLocal.comments_arr || props.location.state 
               ? <div>
                   <p>{stateLocal.post_title}</p>
                   <p>{stateLocal.post_body}</p>
