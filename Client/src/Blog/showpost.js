@@ -124,14 +124,14 @@ const ShowPost = (props) => {
        setState({...stateLocal, edit_comment_id: 0})
      }
 
-    // props.cur_user_id === props.comment.user_id
+
     const RenderComments = (props) => {
       return(
       <div className={stateLocal.delete_comment_id === props.comment.cid
                         ? "FadeOutComment"
                         : "CommentStyles"}>
         <div>
-        {true
+        {props.cur_user_id === props.comment.user_id
           ? !props.isEditing
             ?  <div>
                   <p>{props.comment.comment} </p>
