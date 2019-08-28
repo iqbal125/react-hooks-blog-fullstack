@@ -218,9 +218,6 @@ return(
       onChange={handleSearch}
     />
     <hr />
-     <div>
-        { console.log('dfasg')  }
-     </div>
      <button onClick={() => console.log(stateLocal)}> Button </button>
      <button onClick={() => console.log(context)}> Button </button>
      <br />
