@@ -283,7 +283,6 @@ const ShowPost = (props) => {
                 </div>
             : null
            }
-            <button onClick={() => console.log(stateLocal)}>gdgasg</button>
 
               <div style={{cursor: 'pointer'}} onClick={context.authState
                                                         ? () => handleLikes()
