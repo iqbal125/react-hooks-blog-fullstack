@@ -101,8 +101,12 @@ const ShowPost = (props) => {
 
 
     const handleCommentSubmit = (submitted_comment) => {
-        setState({...stateLocal, comments_arr: [submitted_comment,
-                                                ...stateLocal.comments_arr]})
+        if(stateLocal.comments_arr) {
+            setState({...stateLocal, comments_arr: [submitted_comment,
+                                                  ...stateLocal.comments_arr]})
+         } else {
+           setState({...stateLocal, comments_arr: [submitted_comment]})
+         }
      };
 
      const handleCommentUpdate = (comment) => {
@@ -131,10 +135,21 @@ const ShowPost = (props) => {
                         ? "FadeOutComment"
                         : "CommentStyles"}>
         <div>
+        <p>{props.comment.comment} </p>
+        <small>
+          { props.comment.date_created === 'Just Now'
+            ?  <div> {props.comment.isEdited
+                  ? <span> Edited </span>
+                  : <span> Just Now </span> }</div>
+            :  props.comment.date_created
+          }
+        </small>
+        <p> By: { props.comment.author} </p>
+        </div>
+        <div>
         {props.cur_user_id === props.comment.user_id
           ? !props.isEditing
             ?  <div>
-                  <p>{props.comment.comment} </p>
                   <Button onClick={() => setState({...stateLocal,
                                                   edit_comment_id: props.comment.cid,
                                                   edit_comment: props.comment.comment
@@ -165,15 +180,6 @@ const ShowPost = (props) => {
                   </form>
             : null }
           </div>
-        <small>
-          { props.comment.date_created === 'Just Now'
-            ?  <div> {props.comment.isEdited
-                  ? <span> Edited </span>
-                  : <span> Just Now </span> }</div>
-            :  props.comment.date_created
-          }
-        </small>
-        <p> By: { props.comment.author} </p>
       </div>
     );
    }
@@ -275,7 +281,7 @@ const ShowPost = (props) => {
         <div>
           <div>
             <h2>Post</h2>
-            {stateLocal.comments_arr || props.location.state 
+            {stateLocal.comments_arr || props.location.state
               ? <div>
                   <p>{stateLocal.post_title}</p>
                   <p>{stateLocal.post_body}</p>
@@ -342,3 +348,4 @@ const ShowPost = (props) => {
 
 
 export default ShowPost;
+
