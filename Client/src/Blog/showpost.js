@@ -256,14 +256,17 @@ const ShowPost = (props) => {
 
         const data = { uid: user_id, post_id: post_id }
         console.log(data)
-        axios.put('/api/put/likes', data)
-          .then( !stateLocal.like_user_ids.includes(user_id) && stateLocal.like_post
+        if(!stateLocal.like_user_ids.includes(user_id)) {
+        	axios.put('/api/put/likes', data)
+          		.then( !stateLocal.like_user_ids.includes(user_id)
+          					&& stateLocal.like_post
                     ? setState({...stateLocal,
                                 likes: stateLocal.likes + 1,
                                 like_post: false})
                     : null )
-          .catch(err => console.log(err))
+          		.catch(err => console.log(err))
       };
+     }
 
 
     return(
