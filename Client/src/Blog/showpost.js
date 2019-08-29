@@ -84,18 +84,7 @@ const ShowPost = (props) => {
                           ? setState({...stateLocal, comments_arr: [...res.data]})
                           : null )
            .catch((err) => console.log(err))
-       } else {
-         console.log('ffff')
-         const post_id = props.location.pathname.substring(6)
-         setTimeout(() =>
-         axios.get('/api/get/allpostcomments',
-                       {params: {post_id: post_id}} )
-             .then(res => res.data.length !== 0
-                            ? setState({...stateLocal, comments_arr: [...res.data]})
-                            : null )
-             .catch((err) => console.log(err) )
-          , 500 )
-       }
+       } 
      }
    }, [props.location, stateLocal])
 
