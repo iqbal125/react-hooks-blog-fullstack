@@ -77,7 +77,7 @@ const ShowPost = (props) => {
    useEffect(() => {
      if(!stateLocal.comments_arr) {
        if(props.location.state) {
-         const post_id = props.location.state.post.post.pid
+         const post_id = props.location.pathname.substring(6)
          axios.get('/api/get/allpostcomments',
                      {params: {post_id: post_id}} )
            .then(res => res.data.length !== 0
